@@ -854,7 +854,8 @@
                       <p>Your personal data is handled in accordance with the Kenya Data Protection Act 2019. We will
                         never sell your data to third parties.</p>
                     </div>
-                    <label class="chk-opt"><input type="checkbox" id="agree_terms" /><span class="text-sm">I have read
+                    <label class="chk-opt"><input type="checkbox" id="Terms_and_Conditions_Accepted" /><span
+                        class="text-sm">I have read
                         and agree to the Terms and Conditions <span class="req">*</span></span></label>
                   </div>
 
@@ -938,8 +939,12 @@
                     <div class="grid grid-cols-2 gap-4">
                       <div><label class="flabel">Email Address <span class="req">*</span></label><input type="email"
                           class="field" id="m_email" placeholder="you@example.com" /></div>
-                      <div><label class="flabel">Phone Number <span class="req">*</span></label><input type="tel"
-                          class="field" id="m_phone" placeholder="+254 7XX XXX XXX" /></div>
+                      <div><label class="flabel">Secondary Email</label><input type="email" class="field"
+                          id="m_email_secondary" placeholder="secondary@example.com" /></div>
+                      <div><label class="flabel">Personal Phone Number <span class="req">*</span></label><input
+                          type="tel" class="field" id="m_phone" placeholder="+254 7XX XXX XXX" /></div>
+                      <div><label class="flabel">Home Phone Number</label><input type="tel" class="field"
+                          id="m_phone_home" placeholder="+254 7XX XXX XXX" /></div>
                     </div>
                   </div>
 
@@ -950,14 +955,18 @@
                     <div class="mb-4">
                       <label class="flabel">Identification Type <span class="req">*</span></label>
                       <div class="flex gap-3">
-                        <label class="radio-opt flex-1"><input type="radio" name="id_type" value="national_id"
-                            checked /> National ID</label>
-                        <label class="radio-opt flex-1"><input type="radio" name="id_type" value="passport" />
-                          Passport</label>
+                        <label class="radio-opt flex-1"><input type="radio" name="id_type" value="national_id" checked
+                            onchange="updateIdDocField()" /> National ID</label>
+                        <label class="radio-opt flex-1"><input type="radio" name="id_type" value="passport"
+                            onchange="updateIdDocField()" /> Passport</label>
                       </div>
                     </div>
-                    <div><label class="flabel">ID / Passport Number <span class="req">*</span></label><input type="text"
-                        class="field" id="id_doc_no" placeholder="e.g. 12345678" /></div>
+                    <div>
+                      <label class="flabel" id="id_doc_label">National ID Number <span class="req">*</span></label>
+                      <input type="text" class="field" id="id_no" placeholder="e.g. 12345678" />
+                      <input type="text" class="field" id="passport_no" placeholder="e.g. A1234567"
+                        style="display:none;" />
+                    </div>
                   </div>
 
                   <!-- Step 6: Personal -->
@@ -1030,8 +1039,20 @@
                         </select></div>
                       <div><label class="flabel">Phone Number <span class="req">*</span></label><input type="tel"
                           class="field" id="kin_phone" placeholder="+254 7XX XXX XXX" /></div>
-                      <div><label class="flabel">ID / Passport No. <span class="req">*</span></label><input type="text"
-                          class="field" id="kin_id" placeholder="12345678" /></div>
+                      <div class="col-span-2">
+                        <label class="flabel">Identification Type <span class="req">*</span></label>
+                        <div class="flex gap-3 mb-3">
+                          <label class="radio-opt flex-1"><input type="radio" name="kin_id_type" value="national_id"
+                              checked onchange="updateKinIdField()" /> National ID</label>
+                          <label class="radio-opt flex-1"><input type="radio" name="kin_id_type" value="passport"
+                              onchange="updateKinIdField()" /> Passport</label>
+                        </div>
+                        <label class="flabel" id="kin_id_doc_label">National ID Number <span
+                            class="req">*</span></label>
+                        <input type="text" class="field" id="kin_id_no" placeholder="12345678" />
+                        <input type="text" class="field" id="kin_passport_no" placeholder="e.g. A1234567"
+                          style="display:none;" />
+                      </div>
                       <div><label class="flabel">Email Address</label><input type="email" class="field" id="kin_email"
                           placeholder="kin@example.com" /></div>
                       <div><label class="flabel">Date of Birth</label><input type="date" class="field" id="kin_dob" />
@@ -1809,6 +1830,13 @@
         const input = document.getElementById(id);
         if (input && input.files[0]) formData.append(id + '_file', input.files[0], input.files[0].name);
       });
+      /* extract first name and last name from the fullname field and append to the form data */
+      const fullName = payload.Full_Name;
+      if (fullName) {
+        const names = fullName.split(' ');
+        payload.First_Name = names[0];
+        payload.Last_Name = names.slice(1).join(' ');
+      }
 
       // Show spinner
       document.getElementById('spinnerOverlay').classList.add('active');
@@ -1826,7 +1854,7 @@
             body: { success: true, applicationId: 'RD-APP-' + Date.now(), message: 'Application received.' }
           }
         };
-        await fetch('https://flow.zoho.com/920894939/flow/webhook/incoming?zapikey=1001.7d11a0e3503e956e5080d92dce321884.68ef335d3cc243ddf197e37a813df439&isdebug=true', {
+        await fetch('http://localhost:3001', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
           body: JSON.stringify(zohoPayload)
@@ -1911,6 +1939,29 @@
       const nameEl = document.getElementById(nameId);
       nameEl.textContent = file.name;
       nameEl.classList.remove('hidden');
+    }
+
+    function updateIdDocField() {
+      const isPassport = document.querySelector('input[name="id_type"]:checked').value === 'passport';
+      document.getElementById('id_doc_label').innerHTML = isPassport
+        ? 'Passport Number <span style="color:var(--color-red)">*</span>'
+        : 'National ID Number <span style="color:var(--color-red)">*</span>';
+      document.getElementById('id_no').style.display = isPassport ? 'none' : '';
+      document.getElementById('passport_no').style.display = isPassport ? '' : 'none';
+      // Clear the hidden one
+      if (isPassport) document.getElementById('id_no').value = '';
+      else document.getElementById('passport_no').value = '';
+    }
+
+    function updateKinIdField() {
+      const isPassport = document.querySelector('input[name="kin_id_type"]:checked').value === 'passport';
+      document.getElementById('kin_id_doc_label').innerHTML = isPassport
+        ? 'Passport Number <span style="color:var(--color-red)">*</span>'
+        : 'National ID Number <span style="color:var(--color-red)">*</span>';
+      document.getElementById('kin_id_no').style.display = isPassport ? 'none' : '';
+      document.getElementById('kin_passport_no').style.display = isPassport ? '' : 'none';
+      if (isPassport) document.getElementById('kin_id_no').value = '';
+      else document.getElementById('kin_passport_no').value = '';
     }
   </script>
 </body>
