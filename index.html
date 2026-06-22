@@ -406,350 +406,21 @@
 
             <!-- Tabs -->
             <div class="flex border-b border-slate-200 bg-slate-50">
-              <button class="form-tab active" id="tabMembership" onclick="switchTab('membership')">Membership</button>
-              <button class="form-tab" id="tabLoan" onclick="switchTab('loan')">Loan Application</button>
+              <button class="form-tab active" id="tabLoan" onclick="switchTab('loan')">Loan Application</button>
               <button class="form-tab" id="tabSavings" onclick="switchTab('savings')">Savings</button>
               <button class="form-tab" id="tabLeads" onclick="switchTab('leads')">Products</button>
             </div>
 
             <div class="p-7 bg-white">
 
-              <!-- ===== MEMBERSHIP FORM ===== -->
-              <div id="wrapMembership">
-                <div id="mForm">
-                  <!-- Progress -->
-                  <div class="mb-7">
-                    <div class="flex items-center justify-between mb-2">
-                      <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest" id="mStepLabel">Step
-                        1 of 6: Select Product</span>
-                      <span class="text-xs font-bold" id="mStepPct" style="color:#215d72;">16%</span>
-                    </div>
-                    <div class="h-1.5 bg-slate-100 overflow-hidden">
-                      <div class="h-full prog-fill" id="mProgressBar" style="width:12%;background:#215d72;"></div>
-                    </div>
-                    <div class="flex items-center gap-1 mt-4 overflow-x-auto pb-1">
-                      <div class="sdot-wrap flex items-center gap-1 active" id="mswrap1">
-                        <div class="sdot active" id="msdot1">1</div>
-                        <div class="sdot-label">Welcome</div>
-                      </div>
-                      <div class="flex-1 h-px bg-slate-200 min-w-2" id="mline1"></div>
-                      <div class="sdot-wrap flex items-center gap-1" id="mswrap2">
-                        <div class="sdot" id="msdot2">2</div>
-                        <div class="sdot-label">Terms</div>
-                      </div>
-                      <div class="flex-1 h-px bg-slate-200 min-w-2" id="mline2"></div>
-                      <div class="sdot-wrap flex items-center gap-1" id="mswrap3">
-                        <div class="sdot" id="msdot3">3</div>
-                        <div class="sdot-label">Docs</div>
-                      </div>
-                      <div class="flex-1 h-px bg-slate-200 min-w-2" id="mline3"></div>
-                      <div class="sdot-wrap flex items-center gap-1" id="mswrap4">
-                        <div class="sdot" id="msdot4">4</div>
-                        <div class="sdot-label">Details</div>
-                      </div>
-                      <div class="flex-1 h-px bg-slate-200 min-w-2" id="mline4"></div>
-                      <div class="sdot-wrap flex items-center gap-1" id="mswrap5">
-                        <div class="sdot" id="msdot5">5</div>
-                        <div class="sdot-label">Kin</div>
-                      </div>
-                      <div class="flex-1 h-px bg-slate-200 min-w-2" id="mline5"></div>
-                      <div class="sdot-wrap flex items-center gap-1" id="mswrap6">
-                        <div class="sdot" id="msdot6">6</div>
-                        <div class="sdot-label">Submit</div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <!-- Step 1: Product -->
-                  <div class="form-step active" id="msection1">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
-                      style="color:#215d72;">Select Account Type</div>
-                    <div class="flex flex-col gap-3">
-                      <label class="prod-card">
-                        <input type="radio" name="product_interest" value="savings" />
-                        <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#f0f7fa;">
-                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#215d72;">
-                            <path
-                              d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="font-semibold text-slate-900 text-sm">Savings Account</div>
-                          <div class="text-slate-500 text-xs mt-0.5">Grow your money with up to 14% dividends - from KSh
-                            500/month</div>
-                        </div>
-                      </label>
-                      <label class="prod-card">
-                        <input type="radio" name="product_interest" value="loan" />
-                        <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#fff4f3;">
-                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#f14e3f;">
-                            <path
-                              d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="font-semibold text-slate-900 text-sm">Loan Product</div>
-                          <div class="text-slate-500 text-xs mt-0.5">Borrow up to 3× your savings - approval in 24 hours
-                          </div>
-                        </div>
-                      </label>
-                      <label class="prod-card">
-                        <input type="radio" name="product_interest" value="both" />
-                        <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#f0fdf4;">
-                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#16a34a;">
-                            <path
-                              d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
-                          </svg>
-                        </div>
-                        <div>
-                          <div class="font-semibold text-slate-900 text-sm">Both Savings & Loan</div>
-                          <div class="text-slate-500 text-xs mt-0.5">Open a savings account and simultaneously apply for
-                            a loan</div>
-                        </div>
-                      </label>
-                    </div>
-                  </div>
-
-                  <!-- Step 2: Terms -->
-                  <div class="form-step" id="msection2">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
-                      style="color:#215d72;">Terms & Conditions</div>
-                    <div class="tc-box mb-5">
-                      <h4 class="font-semibold text-slate-800 text-sm mb-1">1. Account Opening</h4>
-                      <p>By opening an account, you agree to provide accurate and truthful information. We reserve the
-                        right to verify the information provided and may refuse to open an account at our discretion.
-                      </p>
-                      <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">2. Deposits and Withdrawals</h4>
-                      <p>Minimum deposit requirements may apply. Withdrawals may be subject to notice periods and
-                        limitations as per the specific account type chosen.</p>
-                      <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">3. Interest & Dividends</h4>
-                      <p>Dividend rates are subject to approval at the AGM. The current indicative rate is 14% p.a. on
-                        deposits. Rates may vary year to year.</p>
-                      <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">4. Fees and Charges</h4>
-                      <p>Account maintenance fees, transaction fees, and other charges may apply. Please refer to our
-                        current fee schedule available at any branch or on our website.</p>
-                      <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">5. Data Protection</h4>
-                      <p>Your personal data is handled in accordance with the Kenya Data Protection Act 2019. We will
-                        never sell your data to third parties.</p>
-                    </div>
-                    <label class="chk-opt"><input type="checkbox" id="Terms_and_Conditions_Accepted" /><span
-                        class="text-sm">I have read
-                        and agree to the Terms and Conditions <span class="req">*</span></span></label>
-                  </div>
-
-                  <!-- Step 3: Documents -->
-                  <div class="form-step" id="msection3">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
-                      style="color:#215d72;">Required Documents</div>
-                    <p class="text-slate-500 text-sm mb-5">Prepare the following. You can photograph them with your
-                      phone.</p>
-                    <div class="flex items-start gap-3 mb-3 p-4 border border-slate-100 bg-slate-50">
-                      <div class="w-8 h-8 flex items-center justify-center flex-shrink-0" style="background:#f0f7fa;">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" style="fill:#215d72;">
-                          <path
-                            d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c1.66 0 3 1.34 3 3s-1.34 3-3 3-3-1.34-3-3 1.34-3 3-3zm0 14.2c-2.5 0-4.71-1.28-6-3.22.03-1.99 4-3.08 6-3.08 1.99 0 5.97 1.09 6 3.08-1.29 1.94-3.5 3.22-6 3.22z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="font-semibold text-slate-800 text-sm">National ID / Passport</div>
-                        <div class="text-slate-500 text-xs mt-0.5">Front and back of your ID, or passport bio-data page
-                        </div>
-                      </div>
-                    </div>
-                    <div class="flex items-start gap-3 mb-5 p-4 border border-slate-100 bg-slate-50">
-                      <div class="w-8 h-8 flex items-center justify-center flex-shrink-0" style="background:#f0f7fa;">
-                        <svg class="w-4 h-4" viewBox="0 0 24 24" style="fill:#215d72;">
-                          <path d="M14 2H6c-1.1 0-1.99.9-1.99 2L4 20c0 1.1.89 2 1.99 2H18c1.1 0 2-.9 2-2V8l-6-6z" />
-                        </svg>
-                      </div>
-                      <div>
-                        <div class="font-semibold text-slate-800 text-sm">KRA PIN Certificate</div>
-                        <div class="text-slate-500 text-xs mt-0.5">Your current Kenya Revenue Authority PIN document
-                        </div>
-                      </div>
-                    </div>
-                    <div class="grid grid-cols-2 gap-4">
-                      <div>
-                        <label class="flabel">Upload ID / Passport <span class="req">*</span></label>
-                        <div class="upload-zone" id="m_zone_id"
-                          onclick="document.getElementById('doc_id_passport').click()">
-                          <input type="file" id="doc_id_passport" accept=".jpg,.jpeg,.png,.pdf"
-                            onchange="handleMUpload(this,'m_zone_id','m_fname_id')">
-                          <svg class="w-7 h-7 fill-slate-300 mx-auto mb-2" viewBox="0 0 24 24">
-                            <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
-                          </svg>
-                          <p class="text-slate-500 text-xs">Click to upload</p>
-                          <span class="text-slate-400 text-xs block mt-1">JPG, PNG or PDF · max 5MB</span>
-                          <p class="text-xs font-semibold mt-2 hidden" id="m_fname_id" style="color:#215d72;"></p>
-                        </div>
-                      </div>
-                      <div>
-                        <label class="flabel">Upload KRA PIN <span class="req">*</span></label>
-                        <div class="upload-zone" id="m_zone_kra"
-                          onclick="document.getElementById('doc_kra_pin').click()">
-                          <input type="file" id="doc_kra_pin" accept=".jpg,.jpeg,.png,.pdf"
-                            onchange="handleMUpload(this,'m_zone_kra','m_fname_kra')">
-                          <svg class="w-7 h-7 fill-slate-300 mx-auto mb-2" viewBox="0 0 24 24">
-                            <path d="M9 16h6v-6h4l-7-7-7 7h4zm-4 2h14v2H5z" />
-                          </svg>
-                          <p class="text-slate-500 text-xs">Click to upload</p>
-                          <span class="text-slate-400 text-xs block mt-1">JPG, PNG or PDF · max 5MB</span>
-                          <p class="text-xs font-semibold mt-2 hidden" id="m_fname_kra" style="color:#215d72;"></p>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-
-                  <div class="form-step" id="msection4">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
-                      style="color:#215d72;">Member Details</div>
-                    <div id="zohoFormMount">
-                      <div class="text-slate-400 text-sm py-6 text-center">Loading form…</div>
-                    </div>
-                  </div>
-
-                  <!-- Step 5: Next of Kin -->
-                  <div class="form-step" id="msection5">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
-                      style="color:#215d72;">Next of Kin</div>
-                    <div class="grid grid-cols-2 gap-4 mb-4">
-                      <div><label class="flabel">Full Name <span class="req">*</span></label><input type="text"
-                          class="field" id="kin_name" placeholder="John Odhiambo" /></div>
-                      <div><label class="flabel">Relationship <span class="req">*</span></label><select class="field"
-                          id="kin_relation">
-                          <option value="">Select</option>
-                          <option>Spouse</option>
-                          <option>Parent</option>
-                          <option>Child</option>
-                          <option>Sibling</option>
-                          <option>Other</option>
-                        </select></div>
-                      <div><label class="flabel">Phone Number <span class="req">*</span></label><input type="tel"
-                          class="field" id="kin_phone" placeholder="+254 7XX XXX XXX" /></div>
-                      <div class="col-span-2">
-                        <label class="flabel">Identification Type <span class="req">*</span></label>
-                        <div class="flex gap-3 mb-3">
-                          <label class="radio-opt flex-1"><input type="radio" name="kin_id_type" value="national_id"
-                              checked onchange="updateKinIdField()" /> National ID</label>
-                          <label class="radio-opt flex-1"><input type="radio" name="kin_id_type" value="passport"
-                              onchange="updateKinIdField()" /> Passport</label>
-                        </div>
-                        <label class="flabel" id="kin_id_doc_label">National ID Number <span
-                            class="req">*</span></label>
-                        <input type="text" class="field" id="kin_id_no" placeholder="12345678" />
-                        <input type="text" class="field" id="kin_passport_no" placeholder="e.g. A1234567"
-                          style="display:none;" />
-                      </div>
-                      <div><label class="flabel">Email Address</label><input type="email" class="field" id="kin_email"
-                          placeholder="kin@example.com" /></div>
-                      <div><label class="flabel">Date of Birth</label><input type="date" class="field" id="kin_dob" />
-                      </div>
-                    </div>
-                    <div><label class="flabel">Physical Address</label><input type="text" class="field" id="kin_address"
-                        placeholder="House No., Street, Town" /></div>
-                  </div>
-
-                  <!-- Step 6: Review & Submit -->
-                  <div class="form-step" id="msection6">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
-                      style="color:#215d72;">Review & Declaration</div>
-                    <div class="p-5 mb-5 bg-slate-50 border border-slate-100">
-                      <p class="text-sm text-slate-600 leading-relaxed mb-3">By submitting this form, I confirm that:
-                      </p>
-                      <ul class="text-sm text-slate-600 flex flex-col gap-2 pl-4">
-                        <li class="list-disc">All information provided is true and accurate to the best of my knowledge.
-                        </li>
-                        <li class="list-disc">I have read and agree to the Redian Sacco membership terms and bylaws.
-                        </li>
-                        <li class="list-disc">I consent to KYC verification and credit checks as permitted by law.</li>
-                        <li class="list-disc">I agree to pay the KSh 2,000 registration fee within 7 days of approval.
-                        </li>
-                        <li class="list-disc">My data will be stored and processed in accordance with the Privacy
-                          Policy.</li>
-                      </ul>
-                    </div>
-                    <div class="mb-5"><label class="chk-opt"><input type="checkbox" id="declaration" /><span
-                          class="text-sm">I agree to the <a href="#" style="color:#215d72;" class="underline">Terms &
-                            Conditions</a> and <a href="#" style="color:#215d72;" class="underline">Privacy
-                            Policy</a>.</span></label></div>
-                    <div class="mb-5">
-                      <label class="flabel">Digital Signature (Full Name) <span class="req">*</span></label>
-                      <input type="text" class="field" id="signature"
-                        placeholder="Type your full name as your digital signature" style="font-style:italic;" />
-                    </div>
-                    <div class="p-4 border-l-4 bg-slate-50" style="border-left-color:#215d72;">
-                      <div class="text-sm font-bold text-slate-700 mb-1">What happens next?</div>
-                      <p class="text-sm text-slate-500 leading-relaxed">Your application enters our member system
-                        instantly. You'll receive a WhatsApp confirmation within 5 minutes. Full approval takes 24–48
-                        hours, after which you'll receive a digital membership agreement to sign.</p>
-                    </div>
-                  </div>
-
-                  <!-- Nav Buttons -->
-                  <div class="flex items-center justify-between mt-7 pt-5 border-t border-slate-100">
-                    <button type="button" id="mPrevBtn" onclick="changeStep('membership',-1)"
-                      class="hidden items-center gap-2 px-5 py-2.5 border border-slate-200 text-slate-600 font-semibold text-sm cursor-pointer hover:bg-slate-50 transition-all bg-white">
-                      <svg class="w-4 h-4 fill-current" viewBox="0 0 24 24">
-                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
-                      </svg>
-                      Back
-                    </button>
-                    <button type="button" id="mNextBtn" onclick="changeStep('membership',1)"
-                      class="btn-primary ml-auto">
-                      Next Step
-                      <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
-                      </svg>
-                    </button>
-                  </div>
-                </div>
-
-                <!-- Success -->
-                <div id="mSuccess" class="hidden text-center py-10">
-                  <div
-                    class="w-16 h-16 border-2 border-green-200 flex items-center justify-center mx-auto mb-5 bg-green-50">
-                    <svg class="w-8 h-8 fill-green-500" viewBox="0 0 24 24">
-                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-                    </svg>
-                  </div>
-                  <h3 class="font-display text-2xl text-slate-900 mb-3"
-                    style="font-family:'DM Serif Display',Georgia,serif;">Application Submitted!</h3>
-                  <p class="text-slate-500 text-sm max-w-sm mx-auto mb-6 leading-relaxed">Thank you for applying to join
-                    Redian Sacco. Your application has been received - a WhatsApp confirmation is on its way.</p>
-                  <div class="p-5 text-left text-sm mb-6 max-w-sm mx-auto border border-slate-100 bg-slate-50">
-                    <div class="font-bold mb-2 text-slate-700">What happens next:</div>
-                    <div class="flex flex-col gap-1.5 text-slate-500">
-                      <div> Application record created in member system</div>
-                      <div> Membership team notified</div>
-                      <div> KYC verification in progress</div>
-                      <div> Digital membership agreement being prepared</div>
-                    </div>
-                  </div>
-                  <button onclick="resetForm('membership')"
-                    class="px-6 py-2.5 border font-semibold text-sm cursor-pointer hover:bg-slate-50 transition-all bg-white"
-                    style="border-color:#215d72;color:#215d72;">Start a New Application</button>
-                </div>
-              </div>
-
-              <!-- ===== LOAN FORM (Zoho CRM web form, embedded) ===== -->
-              <div id="wrapLoan" style="display:none;">
-                <iframe id="loanFormFrame" src="loans-zoho-form.html" title="Redian Sacco Loan Application"
-                  style="width:100%;border:0;display:block;overflow:hidden;height:560px;" scrolling="no"></iframe>
-              </div>
-
-              <!-- ===== SAVINGS FORM (Zoho CRM web form, embedded) ===== -->
-              <div id="wrapSavings" style="display:none;">
-                <iframe id="savingsFormFrame" src="savings-zoho-form.html" title="Redian Sacco Savings Application"
-                  style="width:100%;border:0;display:block;overflow:hidden;height:520px;" scrolling="no"></iframe>
-              </div>
-
               <!-- ===== LEADS FORM (inline wizard) ===== -->
-              <div id="wrapLeads" style="display:none;">
+              <div id="wrapLeads">
                 <div id="lzForm">
                   <!-- Progress -->
                   <div class="mb-7">
                     <div class="flex items-center justify-between mb-2">
-                      <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest" id="lzStepLabel">Step 1 of 5: Welcome</span>
+                      <span class="text-xs font-semibold text-slate-500 uppercase tracking-widest" id="lzStepLabel">Step
+                        1 of 5: Welcome</span>
                       <span class="text-xs font-bold" id="lzStepPct" style="color:#215d72;">20%</span>
                     </div>
                     <div class="h-1.5 bg-slate-100 overflow-hidden">
@@ -785,36 +456,52 @@
 
                   <!-- STEP 1: Welcome & Product Selection -->
                   <div class="form-step active" id="lzsection1">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Select Account Type</div>
+                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
+                      style="color:#215d72;">Select Account Type</div>
                     <div class="flex flex-col gap-3">
                       <label class="prod-card" id="lzCard_loan">
-                        <input type="radio" name="lz_product_type" value="Loan Product" id="lz_acct_loan" onchange="lzSyncCard()">
+                        <input type="radio" name="lz_product_type" value="Loan Product" id="lz_acct_loan"
+                          onchange="lzSyncCard()">
                         <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#fff4f3;">
-                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#f14e3f;"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#f14e3f;">
+                            <path
+                              d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z" />
+                          </svg>
                         </div>
                         <div>
                           <div class="font-semibold text-slate-900 text-sm">Loan Product</div>
-                          <div class="text-slate-500 text-xs mt-0.5">Access affordable credit facilities tailored to your needs.</div>
+                          <div class="text-slate-500 text-xs mt-0.5">Access affordable credit facilities tailored to
+                            your needs.</div>
                         </div>
                       </label>
                       <label class="prod-card" id="lzCard_savings">
-                        <input type="radio" name="lz_product_type" value="Savings Account" id="lz_acct_savings" onchange="lzSyncCard()">
+                        <input type="radio" name="lz_product_type" value="Savings Account" id="lz_acct_savings"
+                          onchange="lzSyncCard()">
                         <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#f0f7fa;">
-                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#215d72;"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#215d72;">
+                            <path
+                              d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z" />
+                          </svg>
                         </div>
                         <div>
                           <div class="font-semibold text-slate-900 text-sm">Savings Account</div>
-                          <div class="text-slate-500 text-xs mt-0.5">Grow your money with competitive interest rates.</div>
+                          <div class="text-slate-500 text-xs mt-0.5">Grow your money with competitive interest rates.
+                          </div>
                         </div>
                       </label>
                       <label class="prod-card" id="lzCard_both">
-                        <input type="radio" name="lz_product_type" value="Both (Savings &amp; Loan)" id="lz_acct_both" onchange="lzSyncCard()">
+                        <input type="radio" name="lz_product_type" value="Both (Savings &amp; Loan)" id="lz_acct_both"
+                          onchange="lzSyncCard()">
                         <div class="w-9 h-9 flex items-center justify-center flex-shrink-0" style="background:#f0fdf4;">
-                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#16a34a;"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z"/></svg>
+                          <svg class="w-5 h-5" viewBox="0 0 24 24" style="fill:#16a34a;">
+                            <path
+                              d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm-2 16l-4-4 1.41-1.41L10 14.17l6.59-6.59L18 9l-8 8z" />
+                          </svg>
                         </div>
                         <div>
                           <div class="font-semibold text-slate-900 text-sm">Both Savings &amp; Loan</div>
-                          <div class="text-slate-500 text-xs mt-0.5">Enjoy the full suite — save and borrow under one membership.</div>
+                          <div class="text-slate-500 text-xs mt-0.5">Enjoy the full suite — save and borrow under one
+                            membership.</div>
                         </div>
                       </label>
                     </div>
@@ -822,19 +509,23 @@
 
                   <!-- STEP 2: Personal Info -->
                   <div class="form-step" id="lzsection2">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Personal Information</div>
+                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
+                      style="color:#215d72;">Personal Information</div>
                     <div class="grid grid-cols-2 gap-4 mb-4" style="grid-template-columns:1fr 1fr;">
                       <div style="grid-column:1/-1;">
                         <label class="flabel" for="lz_full_name">Full Name</label>
-                        <input type="text" class="field" id="lz_full_name" name="LEADCF15" maxlength="255" placeholder="e.g. Jane Wanjiru Kamau">
+                        <input type="text" class="field" id="lz_full_name" name="LEADCF15" maxlength="255"
+                          placeholder="e.g. Jane Wanjiru Kamau">
                       </div>
                       <div>
                         <label class="flabel" for="lz_product_name">Product Name <span class="req">*</span></label>
-                        <input type="text" class="field" id="lz_product_name" name="Last Name" maxlength="80" placeholder="e.g. Loan Product A">
+                        <input type="text" class="field" id="lz_product_name" name="Last Name" maxlength="80"
+                          placeholder="e.g. Loan Product A">
                       </div>
                       <div>
                         <label class="flabel" for="lz_id_no">ID No</label>
-                        <input type="text" class="field" id="lz_id_no" name="LEADCF3" maxlength="255" placeholder="e.g. 12345678">
+                        <input type="text" class="field" id="lz_id_no" name="LEADCF3" maxlength="255"
+                          placeholder="e.g. 12345678">
                       </div>
                       <div>
                         <label class="flabel" for="lz_id_type">Identification Type</label>
@@ -846,11 +537,13 @@
                       </div>
                       <div>
                         <label class="flabel" for="lz_phone">Phone</label>
-                        <input type="text" class="field" id="lz_phone" name="Phone" maxlength="30" placeholder="+254 7XX XXX XXX">
+                        <input type="text" class="field" id="lz_phone" name="Phone" maxlength="30"
+                          placeholder="+254 7XX XXX XXX">
                       </div>
                       <div>
                         <label class="flabel" for="lz_email">Email</label>
-                        <input type="text" class="field" id="lz_email" name="Email" maxlength="100" placeholder="jane@example.com">
+                        <input type="text" class="field" id="lz_email" name="Email" maxlength="100"
+                          placeholder="jane@example.com">
                       </div>
                       <div>
                         <label class="flabel" for="lz_kyc">KYC Status</label>
@@ -866,19 +559,23 @@
 
                   <!-- STEP 3: Address & Next of Kin -->
                   <div class="form-step" id="lzsection3">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Address &amp; Next of Kin</div>
+                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
+                      style="color:#215d72;">Address &amp; Next of Kin</div>
                     <div class="grid gap-4" style="grid-template-columns:1fr 1fr;">
                       <div>
                         <label class="flabel" for="lz_country">Address — Country</label>
-                        <input type="text" class="field" id="lz_country" name="Address - City" maxlength="255" placeholder="e.g. Kenya">
+                        <input type="text" class="field" id="lz_country" name="Address - City" maxlength="255"
+                          placeholder="e.g. Kenya">
                       </div>
                       <div>
                         <label class="flabel" for="lz_postal">Postal Code</label>
-                        <input type="text" class="field" id="lz_postal" name="Address - Zip / Postal Code" maxlength="255" placeholder="e.g. 00100">
+                        <input type="text" class="field" id="lz_postal" name="Address - Zip / Postal Code"
+                          maxlength="255" placeholder="e.g. 00100">
                       </div>
                       <div>
                         <label class="flabel" for="lz_kin_state">Kin Address — State / Province</label>
-                        <input type="text" class="field" id="lz_kin_state" name="LEADCF13" maxlength="255" placeholder="e.g. Nairobi">
+                        <input type="text" class="field" id="lz_kin_state" name="LEADCF13" maxlength="255"
+                          placeholder="e.g. Nairobi">
                       </div>
                       <div>
                         <label class="flabel" for="lz_kin_rel">Kin Relationship</label>
@@ -893,57 +590,105 @@
 
                   <!-- STEP 4: Terms & Conditions -->
                   <div class="form-step" id="lzsection4">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Terms &amp; Conditions</div>
+                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
+                      style="color:#215d72;">Terms &amp; Conditions</div>
                     <p class="text-slate-500 text-sm mb-4">Please read and accept the terms below to continue.</p>
                     <div class="tc-box mb-5">
                       <h4 class="font-semibold text-slate-800 text-sm mb-1">1. Membership Eligibility</h4>
-                      <p>Membership is open to individuals who meet the eligibility criteria set by Redian Sacco. Applicants must be at least 18 years of age and must provide valid identification as required.</p>
+                      <p>Membership is open to individuals who meet the eligibility criteria set by Redian Sacco.
+                        Applicants must be at least 18 years of age and must provide valid identification as required.
+                      </p>
                       <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">2. Data Privacy</h4>
-                      <p>By submitting this form, you consent to the collection and processing of your personal data by Redian Sacco for the purpose of evaluating your application, account management, and communication as permitted under applicable data-protection laws.</p>
+                      <p>By submitting this form, you consent to the collection and processing of your personal data by
+                        Redian Sacco for the purpose of evaluating your application, account management, and
+                        communication as permitted under applicable data-protection laws.</p>
                       <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">3. Accuracy of Information</h4>
-                      <p>You confirm that all information provided in this application is true, accurate, and complete. Providing false or misleading information may result in the rejection of your application or termination of membership.</p>
+                      <p>You confirm that all information provided in this application is true, accurate, and complete.
+                        Providing false or misleading information may result in the rejection of your application or
+                        termination of membership.</p>
                       <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">4. KYC Compliance</h4>
-                      <p>In line with regulatory requirements, Redian Sacco conducts Know Your Customer (KYC) verification for all applicants. You agree to provide any additional documentation requested to complete this process.</p>
+                      <p>In line with regulatory requirements, Redian Sacco conducts Know Your Customer (KYC)
+                        verification for all applicants. You agree to provide any additional documentation requested to
+                        complete this process.</p>
                       <h4 class="font-semibold text-slate-800 text-sm mt-4 mb-1">5. Product Terms</h4>
-                      <p>Specific terms governing the products you apply for (loan facilities, savings accounts) are outlined in the respective product agreements, which will be provided upon approval of your application.</p>
+                      <p>Specific terms governing the products you apply for (loan facilities, savings accounts) are
+                        outlined in the respective product agreements, which will be provided upon approval of your
+                        application.</p>
                     </div>
                     <label class="chk-opt">
                       <input type="checkbox" id="lz_terms">
-                      <span class="text-sm">I have read and agree to the <strong>Terms and Conditions</strong> of Redian Sacco. <span class="req">*</span></span>
+                      <span class="text-sm">I have read and agree to the <strong>Terms and Conditions</strong> of Redian
+                        Sacco. <span class="req">*</span></span>
                     </label>
                   </div>
 
                   <!-- STEP 5: Review & Submit -->
                   <div class="form-step" id="lzsection5">
-                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100" style="color:#215d72;">Review &amp; Submit</div>
+                    <div class="text-xs font-bold tracking-widest uppercase mb-4 pb-3 border-b border-slate-100"
+                      style="color:#215d72;">Review &amp; Submit</div>
                     <p class="text-slate-500 text-sm mb-5">Please confirm your details before submitting.</p>
                     <div class="mb-5">
-                      <div class="text-xs font-bold uppercase tracking-widest text-teal-700 mb-3 pb-2 border-b border-slate-100" style="color:#215d72;">Product</div>
+                      <div
+                        class="text-xs font-bold uppercase tracking-widest text-teal-700 mb-3 pb-2 border-b border-slate-100"
+                        style="color:#215d72;">Product</div>
                       <div class="grid gap-3" style="grid-template-columns:1fr 1fr;">
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Account Type</div><div class="text-sm font-medium text-slate-800" id="lzrv_acctType">—</div></div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Account Type</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_acctType">—</div>
+                        </div>
                       </div>
                     </div>
                     <div class="mb-5">
-                      <div class="text-xs font-bold uppercase tracking-widest mb-3 pb-2 border-b border-slate-100" style="color:#215d72;">Personal Information</div>
+                      <div class="text-xs font-bold uppercase tracking-widest mb-3 pb-2 border-b border-slate-100"
+                        style="color:#215d72;">Personal Information</div>
                       <div class="grid gap-3" style="grid-template-columns:1fr 1fr;">
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Full Name</div><div class="text-sm font-medium text-slate-800" id="lzrv_fullName">—</div></div>
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Product Name</div><div class="text-sm font-medium text-slate-800" id="lzrv_productName">—</div></div>
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">ID No</div><div class="text-sm font-medium text-slate-800" id="lzrv_idNo">—</div></div>
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Phone</div><div class="text-sm font-medium text-slate-800" id="lzrv_phone">—</div></div>
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Email</div><div class="text-sm font-medium text-slate-800" id="lzrv_email">—</div></div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Full Name</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_fullName">—</div>
+                        </div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Product Name</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_productName">—</div>
+                        </div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">ID No</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_idNo">—</div>
+                        </div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Phone</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_phone">—</div>
+                        </div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Email</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_email">—</div>
+                        </div>
                       </div>
                     </div>
                     <div class="mb-5">
-                      <div class="text-xs font-bold uppercase tracking-widest mb-3 pb-2 border-b border-slate-100" style="color:#215d72;">Address &amp; Kin</div>
+                      <div class="text-xs font-bold uppercase tracking-widest mb-3 pb-2 border-b border-slate-100"
+                        style="color:#215d72;">Address &amp; Kin</div>
                       <div class="grid gap-3" style="grid-template-columns:1fr 1fr;">
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Country</div><div class="text-sm font-medium text-slate-800" id="lzrv_country">—</div></div>
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Postal Code</div><div class="text-sm font-medium text-slate-800" id="lzrv_postal">—</div></div>
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Kin State</div><div class="text-sm font-medium text-slate-800" id="lzrv_kinState">—</div></div>
-                        <div><div class="text-xs font-bold uppercase text-slate-400 mb-1">Kin Relationship</div><div class="text-sm font-medium text-slate-800" id="lzrv_kinRel">—</div></div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Country</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_country">—</div>
+                        </div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Postal Code</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_postal">—</div>
+                        </div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Kin State</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_kinState">—</div>
+                        </div>
+                        <div>
+                          <div class="text-xs font-bold uppercase text-slate-400 mb-1">Kin Relationship</div>
+                          <div class="text-sm font-medium text-slate-800" id="lzrv_kinRel">—</div>
+                        </div>
                       </div>
                     </div>
                     <div>
-                      <div class="text-xs font-bold uppercase tracking-widest mb-3 pb-2 border-b border-slate-100" style="color:#215d72;">Terms</div>
+                      <div class="text-xs font-bold uppercase tracking-widest mb-3 pb-2 border-b border-slate-100"
+                        style="color:#215d72;">Terms</div>
                       <div class="text-sm font-medium text-slate-800" id="lzrv_terms">—</div>
                     </div>
                   </div>
@@ -953,22 +698,21 @@
                     <button type="button" id="lzPrevBtn" onclick="lzChangeStep(-1)"
                       class="btn-outline flex items-center gap-2" style="display:none;">
                       <svg class="w-4 h-4" viewBox="0 0 24 24" fill="currentColor">
-                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z"/>
+                        <path d="M20 11H7.83l5.59-5.59L12 4l-8 8 8 8 1.41-1.41L7.83 13H20v-2z" />
                       </svg>
                       Back
                     </button>
-                    <button type="button" id="lzNextBtn" onclick="lzChangeStep(1)"
-                      class="btn-primary ml-auto">
+                    <button type="button" id="lzNextBtn" onclick="lzChangeStep(1)" class="btn-primary ml-auto">
                       Next Step
                       <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z"/>
+                        <path d="M12 4l-1.41 1.41L16.17 11H4v2h12.17l-5.58 5.59L12 20l8-8z" />
                       </svg>
                     </button>
-                    <button type="button" id="lzSubmitBtn" onclick="lzSubmit()"
-                      class="btn-primary ml-auto" style="display:none;background:#16a34a;">
+                    <button type="button" id="lzSubmitBtn" onclick="lzSubmit()" class="btn-primary ml-auto"
+                      style="display:none;background:#16a34a;">
                       Submit Application
                       <svg class="w-4 h-4 fill-white" viewBox="0 0 24 24">
-                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/>
+                        <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
                       </svg>
                     </button>
                   </div>
@@ -976,13 +720,32 @@
 
                 <!-- Success state -->
                 <div id="lzSuccess" class="hidden text-center py-10">
-                  <div class="w-16 h-16 border-2 border-green-200 flex items-center justify-center mx-auto mb-5 bg-green-50">
-                    <svg class="w-8 h-8 fill-green-500" viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+                  <div
+                    class="w-16 h-16 border-2 border-green-200 flex items-center justify-center mx-auto mb-5 bg-green-50">
+                    <svg class="w-8 h-8 fill-green-500" viewBox="0 0 24 24">
+                      <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
+                    </svg>
                   </div>
-                  <h3 class="font-display text-2xl text-slate-900 mb-3" style="font-family:'DM Serif Display',Georgia,serif;">Application Submitted!</h3>
-                  <p class="text-slate-500 text-sm max-w-sm mx-auto mb-6 leading-relaxed">Thank you for your interest in Redian Sacco. Your product enquiry has been received and a team member will be in touch shortly.</p>
-                  <button onclick="lzReset()" class="px-6 py-2.5 border font-semibold text-sm cursor-pointer hover:bg-slate-50 transition-all bg-white" style="border-color:#215d72;color:#215d72;">Submit Another</button>
+                  <h3 class="font-display text-2xl text-slate-900 mb-3"
+                    style="font-family:'DM Serif Display',Georgia,serif;">Application Submitted!</h3>
+                  <p class="text-slate-500 text-sm max-w-sm mx-auto mb-6 leading-relaxed">Thank you for your interest in
+                    Redian Sacco. Your product enquiry has been received and a team member will be in touch shortly.</p>
+                  <button onclick="lzReset()"
+                    class="px-6 py-2.5 border font-semibold text-sm cursor-pointer hover:bg-slate-50 transition-all bg-white"
+                    style="border-color:#215d72;color:#215d72;">Submit Another</button>
                 </div>
+              </div>
+
+              <!-- ===== LOAN FORM (Zoho CRM web form, embedded) ===== -->
+              <div id="wrapLoan" style="display:none;">
+                <iframe id="loanFormFrame" src="loans-zoho-form.html" title="Redian Sacco Loan Application"
+                  style="width:100%;border:0;display:block;overflow:hidden;height:560px;" scrolling="no"></iframe>
+              </div>
+
+              <!-- ===== SAVINGS FORM (Zoho CRM web form, embedded) ===== -->
+              <div id="wrapSavings" style="display:none;">
+                <iframe id="savingsFormFrame" src="savings-zoho-form.html" title="Redian Sacco Savings Application"
+                  style="width:100%;border:0;display:block;overflow:hidden;height:520px;" scrolling="no"></iframe>
               </div>
 
             </div>
@@ -1017,7 +780,7 @@
     function lzEl(id) { return document.getElementById(id); }
 
     function lzSyncCard() {
-      ['lzCard_loan','lzCard_savings','lzCard_both'].forEach(function(id) {
+      ['lzCard_loan', 'lzCard_savings', 'lzCard_both'].forEach(function (id) {
         var card = lzEl(id);
         if (!card) return;
         var radio = card.querySelector('input[type=radio]');
@@ -1040,16 +803,16 @@
         if (el) el.textContent = v || '—';
       }
       var acctRadio = document.querySelector('input[name="lz_product_type"]:checked');
-      set('lzrv_acctType',    acctRadio ? acctRadio.value : '');
-      set('lzrv_fullName',    val('lz_full_name'));
+      set('lzrv_acctType', acctRadio ? acctRadio.value : '');
+      set('lzrv_fullName', val('lz_full_name'));
       set('lzrv_productName', val('lz_product_name'));
-      set('lzrv_idNo',        val('lz_id_no'));
-      set('lzrv_phone',       val('lz_phone'));
-      set('lzrv_email',       val('lz_email'));
-      set('lzrv_country',     val('lz_country'));
-      set('lzrv_postal',      val('lz_postal'));
-      set('lzrv_kinState',    val('lz_kin_state'));
-      set('lzrv_kinRel',      val('lz_kin_rel'));
+      set('lzrv_idNo', val('lz_id_no'));
+      set('lzrv_phone', val('lz_phone'));
+      set('lzrv_email', val('lz_email'));
+      set('lzrv_country', val('lz_country'));
+      set('lzrv_postal', val('lz_postal'));
+      set('lzrv_kinState', val('lz_kin_state'));
+      set('lzrv_kinRel', val('lz_kin_rel'));
       var termsEl = lzEl('lz_terms');
       set('lzrv_terms', (termsEl && termsEl.checked) ? '✓ Accepted' : 'Not accepted');
     }
@@ -1061,7 +824,7 @@
         var dot = lzEl('lzsdot' + i);
         var wrap = lzEl('lzswrap' + i);
         if (dot) {
-          dot.classList.remove('active','done');
+          dot.classList.remove('active', 'done');
           if (i < lzCurrent) { dot.classList.add('done'); dot.innerHTML = '&#10003;'; }
           else { dot.textContent = i; if (i === lzCurrent) dot.classList.add('active'); }
         }
@@ -1109,6 +872,7 @@
     }
 
     lzRender();
+    switchTab('leads');
   </script>
 </body>
 

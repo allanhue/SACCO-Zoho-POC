@@ -60,13 +60,6 @@ track.closest('section').addEventListener('mouseleave', () => { autoCarousel = s
 
 //  form state
 const formState = {
-  membership: {
-    current: 1, total: 6, stepsInfo: [
-      'Step 1 of 6: Select Product', 'Step 2 of 6: Terms & Conditions',
-      'Step 3 of 6: Upload Documents', 'Step 4 of 6: Member Details',
-      'Step 5 of 6: Next of Kin', 'Step 6 of 6: Review & Submit'
-    ]
-  },
   loan: {
     current: 1, total: 4, stepsInfo: [
       'Step 1 of 4: Loan Details', 'Step 2 of 4: Employment & Income',
@@ -82,7 +75,6 @@ const formState = {
 };
 
 const pfxMap = {
-  membership: { sec: 'msection', prev: 'mPrevBtn', next: 'mNextBtn', label: 'mStepLabel', pct: 'mStepPct', bar: 'mProgressBar', form: 'mForm', success: 'mSuccess', sdot: 'msdot', swrap: 'mswrap', line: 'mline', wrap: 'wrapMembership' },
   loan: { sec: 'lsection', prev: 'lPrevBtn', next: 'lNextBtn', label: 'lStepLabel', pct: 'lStepPct', bar: 'lProgressBar', form: 'lForm', success: 'lSuccess', sdot: 'lsdot', swrap: 'lswrap', line: 'lline', wrap: 'wrapLoan' },
   savings: { sec: 'ssection', prev: 'sPrevBtn', next: 'sNextBtn', label: 'sStepLabel', pct: 'sStepPct', bar: 'sProgressBar', form: 'sForm', success: 'sSuccess', sdot: 'ssdot', swrap: 'sswrap', line: 'sline', wrap: 'wrapSavings' },
   leads: { wrap: 'wrapLeads' }
@@ -91,7 +83,7 @@ const pfxMap = {
 function cap(s) { return s.charAt(0).toUpperCase() + s.slice(1); }
 
 function switchTab(name) {
-  ['membership', 'loan', 'savings', 'leads'].forEach(f => {
+  ['loan', 'savings', 'leads'].forEach(f => {
     document.getElementById(pfxMap[f].wrap).style.display = f === name ? '' : 'none';
     document.getElementById('tab' + cap(f)).classList.toggle('active', f === name);
   });
@@ -225,24 +217,3 @@ function updateKinIdField() {
   if (isPassport) document.getElementById('kin_id_no').value = '';
   else document.getElementById('kin_passport_no').value = '';
 }
-
-// ── Load Zoho membership form component ──
-fetch('leads-zoho-form.html')
-  .then(r => r.text())
-  .then(html => {
-    const mount = document.getElementById('zohoFormMount');
-    if (!mount) return;
-    mount.innerHTML = html;
-    // Re-execute Zoho scripts that arrived as HTML strings
-    mount.querySelectorAll('script').forEach(old => {
-      const s = document.createElement('script');
-      if (old.src) { s.src = old.src; s.async = true; }
-      else { s.textContent = old.textContent; }
-      old.parentNode.replaceChild(s, old);
-    });
-  })
-  .catch(() => {
-    const mount = document.getElementById('zohoFormMount');
-    if (mount) mount.innerHTML =
-      '<p class="text-sm py-4 text-center" style="color:#f14e3f;">Could not load the form. Please refresh and try again.</p>';
-  });
