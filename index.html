@@ -709,7 +709,6 @@
             <div class="flex border-b border-slate-200 bg-slate-50">
               <button class="form-tab active" id="tabLeads" onclick="switchTab('leads')">Membership</button>
               <button class="form-tab" id="tabLoan" onclick="switchTab('loan')">Loan Application</button>
-              <button class="form-tab" id="tabSavings" onclick="switchTab('savings')">Savings</button>
             </div>
 
             <div class="p-7 bg-white">
@@ -725,11 +724,6 @@
                   style="width:100%;border:0;display:block;overflow:hidden;height:560px;" scrolling="no"></iframe>
               </div>
 
-              <!-- ===== SAVINGS FORM (Zoho CRM web form, embedded) ===== -->
-              <div id="wrapSavings" style="display:none;">
-                <iframe id="savingsFormFrame" src="savings-zoho-form.html" title="Redian Sacco Savings Application"
-                  style="width:100%;border:0;display:block;overflow:hidden;height:520px;" scrolling="no"></iframe>
-              </div>
             </div>
           </div>
         </div>
@@ -779,6 +773,27 @@
           <h4 class="font-semibold text-slate-900 mb-2 text-[15px]">Visit Us</h4>
           <p class="text-slate-500 text-sm leading-relaxed">10th Floor, Westpark Towers, Westlands, Nairobi<br><strong
               class="text-slate-700">18 branches</strong> across Kenya</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HELP & SUPPORT -->
+  <section id="help" class="py-16 px-6 bg-white">
+    <div class="max-w-4xl mx-auto">
+      <div class="reveal text-center mb-14">
+        <div class="inline-block mb-5 px-4 py-1.5 text-xs font-bold tracking-widest uppercase"
+          style="background:#f0f7fa;color:#215d72;border:1px solid #c8dde5;">Help &amp; Support</div>
+        <h2 class="font-display text-slate-900 mb-4"
+          style="font-size:clamp(28px,4vw,46px);font-family:'DM Serif Display',Georgia,serif;">Need a hand with
+          something?</h2>
+        <p class="text-slate-500 text-lg font-light">Send us your question and our support team will get back to
+          you shortly.</p>
+      </div>
+      <div class="reveal border border-slate-200 overflow-hidden shadow-xl">
+        <div class="p-7 bg-white">
+          <iframe id="helpFormFrame" src="help-zoho-form.html" title="Redian Sacco Help & Support"
+            style="width:100%;border:0;display:block;overflow:hidden;height:520px;" scrolling="no"></iframe>
         </div>
       </div>
     </div>
@@ -874,12 +889,12 @@
       if (e.data.type === 'zohoLoanFormHeight') {
         var loanFrame = document.getElementById('loanFormFrame');
         if (loanFrame) loanFrame.style.height = e.data.height + 'px';
-      } else if (e.data.type === 'zohoSavingsFormHeight') {
-        var savingsFrame = document.getElementById('savingsFormFrame');
-        if (savingsFrame) savingsFrame.style.height = e.data.height + 'px';
       } else if (e.data.type === 'zohoMembershipFormHeight') {
         var leadsFrame = document.getElementById('leadsFormFrame');
         if (leadsFrame) leadsFrame.style.height = e.data.height + 'px';
+      } else if (e.data.type === 'zohoHelpFormHeight') {
+        var helpFrame = document.getElementById('helpFormFrame');
+        if (helpFrame) helpFrame.style.height = e.data.height + 'px';
       }
     });
   </script>
